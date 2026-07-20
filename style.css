@@ -24,6 +24,7 @@ body {
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.02);
   overflow: hidden;
   border: 1px solid rgba(200, 180, 160, 0.2);
+  position: relative;
 }
 
 /* ===== HERO ===== */
@@ -65,6 +66,38 @@ body {
   backdrop-filter: blur(2px);
 }
 
+/* ===== FOTO MEMPELAI ===== */
+.couple-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 12px auto 12px;
+  overflow: hidden;
+  border: 4px solid #dacfc4;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  background: #ede4db;
+  position: relative;
+}
+
+.couple-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Fallback jika gambar tidak ada */
+.couple-photo::after {
+  content: "📸";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .couple-names {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2.2rem;
@@ -94,23 +127,24 @@ body {
   margin-top: 10px;
 }
 
-/* ===== LANGUAGE TOGGLE ===== */
+/* ===== LANGUAGE TOGGLE - 3 BAHASA ===== */
 .lang-toggle {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   margin: 14px 0 6px;
+  flex-wrap: wrap;
 }
 
 .lang-btn {
   background: #ede4db;
   border: none;
   border-radius: 60px;
-  padding: 6px 22px;
+  padding: 6px 16px;
   font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   color: #3f332a;
   cursor: pointer;
   transition: 0.2s;
@@ -284,7 +318,7 @@ body {
   border-color: #cbb8a8;
 }
 
-/* ===== RSVP GRID - 2 TOMBOL ===== */
+/* ===== RSVP GRID ===== */
 .rsvp-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -328,6 +362,47 @@ body {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
+/* ===== MUSIC PLAYER ===== */
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.music-btn {
+  background: #3f332a;
+  color: #f6efe8;
+  border: none;
+  border-radius: 60px;
+  padding: 12px 20px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: 1px solid #5b4b3b;
+}
+
+.music-btn:hover {
+  background: #1f1813;
+  transform: scale(1.05);
+}
+
+.music-btn i {
+  font-size: 1rem;
+  color: #dacfc4;
+}
+
+.music-btn.playing {
+  background: #5d4b3a;
+  border-color: #8f7b68;
+}
+
 /* ===== FOOTER ===== */
 .footer-note {
   font-size: 0.75rem;
@@ -351,7 +426,6 @@ body {
   .map-placeholder { height: 140px; }
   .paduan-btn { min-width: 100px; font-size: 0.7rem; padding: 10px 8px; }
   
-  /* RSVP jadi 1 kolom di mobile */
   .rsvp-grid {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -359,6 +433,25 @@ body {
   .btn-rsvp {
     font-size: 0.75rem;
     padding: 12px 10px;
+  }
+  
+  .lang-btn {
+    font-size: 0.65rem;
+    padding: 5px 12px;
+  }
+  
+  .couple-photo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .music-player {
+    bottom: 10px;
+    right: 10px;
+  }
+  .music-btn {
+    padding: 10px 16px;
+    font-size: 0.75rem;
   }
 }
 
@@ -509,17 +602,53 @@ body {
   padding-top: 10px;
 }
 
-.paduan-body .respons-umat {
-  color: #5d4b3a;
-  font-weight: 500;
-  background: #ede7e0;
-  padding: 2px 12px;
-  border-radius: 20px;
-  display: inline-block;
-  margin: 2px 0;
-}
-
 @keyframes fadeIn {
   0% { opacity: 0; transform: scale(0.97); }
   100% { opacity: 1; transform: scale(1); }
+}
+
+/* ===== TOMBOL MAP LINK ===== */
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ede4db;
+  color: #3f332a;
+  padding: 8px 18px;
+  border-radius: 60px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s;
+  border: 1px solid #d6c8ba;
+}
+
+.map-link:hover {
+  background: #d6c8ba;
+  transform: scale(1.02);
+}
+
+.map-link i {
+  font-size: 1rem;
+}
+
+.map-link .fa-google {
+  color: #4285F4;
+}
+
+.map-link .fa-waze {
+  color: #33CCFF;
+}
+
+.map-link .fa-map-marked-alt {
+  color: #ea4335;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .map-link {
+    font-size: 0.7rem;
+    padding: 6px 14px;
+  }
 }
