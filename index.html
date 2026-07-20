@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Undangan Pernikahan | St. Yohanes Rasul Delanggu</title>
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== UNDANGAN UTAMA ===== -->
+  <div class="invitation-card">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-symbol"><i class="fas fa-cross"></i> <i class="fas fa-rosary"></i> <i class="fas fa-cross"></i></div>
+      <h1 id="heroTitle">Pernikahan Kudus</h1>
+      <div class="subhead" id="heroSub">Dalam Kasih Kristus</div>
+      <div class="couple-names">Frankie <span>&</span> Secil</div>
+      <div class="quote" id="heroQuote">
+        <i class="fas fa-quote-left" style="font-size:0.7rem;margin-right:6px;opacity:0.6;"></i>
+        <span id="quoteText">Apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.</span>
+        <i class="fas fa-quote-right" style="font-size:0.7rem;margin-left:6px;opacity:0.6;"></i>
+      </div>
+      <!-- Language Toggle -->
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="id" id="langId">🇮🇩 Indonesia</button>
+        <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
+      </div>
+    </div>
+
+    <!-- DETAIL -->
+    <div class="detail-section">
+      <div class="detail-grid">
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fas fa-church"></i></div>
+          <div class="detail-content">
+            <div class="label" id="locLabel"><i class="fas fa-map-pin" style="margin-right:4px;"></i> Lokasi Misa Pernikahan</div>
+            <div class="value location-name" id="locValue">Gereja St. Yohanes Rasul Delanggu</div>
+            <div style="font-size:0.85rem;color:#5d4b3a;margin-top:2px;font-weight:300;" id="locSub"><i class="fas fa-map-marker-alt" style="margin-right:4px;color:#9f8978;"></i> Delanggu, Klaten</div>
+          </div>
+        </div>
+        <div class="detail-item">
+          <div class="detail-icon"><i class="far fa-calendar-alt"></i></div>
+          <div class="detail-content">
+            <div class="label" id="dateLabel"><i class="far fa-clock" style="margin-right:4px;"></i> Hari & Waktu</div>
+            <div class="value" id="dateValue"><span class="date-highlight">Sabtu, 17 Oktober 2026</span><span style="display:block;font-size:1.2rem;font-weight:600;margin-top:2px;"><i class="far fa-clock" style="font-weight:300;margin-right:8px;color:#7d6856;"></i> <span id="timeText">10.30 WIB</span></span></div>
+          </div>
+        </div>
+      </div>
+      <!-- MAP -->
+      <div class="map-placeholder">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31626.54532028109!2d110.57647367177737!3d-7.624999429768793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5b6a8c4f8d1f%3A0x5f7c1e0e8e6c9f5a!2sGereja%20St%20Yohanes%20Rasul%20Delanggu!5e0!3m2!1sid!2sid!4v1712356789012!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-label"><i class="fas fa-location-dot"></i> <span id="mapLabelText">Gereja St. Yohanes Rasul</span></div>
+      </div>
+    </div>
+
+    <!-- ACTION -->
+    <div class="action-area">
+      <div class="paduan-buttons">
+        <button class="paduan-btn" id="openPaduanBtn" style="flex:2;">
+          <i class="fas fa-book-open"></i> <span id="paduanBtnLabel">📖 Buka Paduan Misa</span>
+        </button>
+      </div>
+
+      <!-- ===== TOMBOL KIRIM UCAPAN & DOA - 2 NOMOR WA ===== -->
+      <div class="rsvp-grid">
+        <a href="#" id="rsvpLink1" class="btn-rsvp" target="_blank">
+          <i class="fas fa-envelope"></i> 
+          <span id="rsvpText1">Kirim ke Frankie</span>
+          <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+        </a>
+        <a href="#" id="rsvpLink2" class="btn-rsvp" target="_blank">
+          <i class="fas fa-envelope"></i> 
+          <span id="rsvpText2">Kirim ke Secil</span>
+          <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <i class="fas fa-circle" style="font-size:0.3rem;vertical-align:middle;"></i>
+      <span id="footerText">Dipersembahkan dalam cinta kasih Kristus</span>
+      <i class="fas fa-circle" style="font-size:0.3rem;vertical-align:middle;"></i><br />
+      <span style="font-size:0.7rem;display:block;margin-top:4px;"><i class="fas fa-church"></i> <span id="footerChurch">Gereja St. Yohanes Rasul · Delanggu</span></span>
+    </div>
+  </div>
+
+  <!-- ===== MODAL PADUAN MISA ===== -->
+  <div class="paduan-modal" id="paduanModal">
+    <div class="paduan-modal-content">
+      <button class="close-modal" id="closePaduanModal">&times;</button>
+      <h2 id="modalTitle">📖 Tata Perayaan Perkawinan dalam Misa</h2>
+      <div class="lang-picker">
+        <button class="active" data-modal-lang="id" id="modalLangId">🇮🇩 Indonesia</button>
+        <button data-modal-lang="es" id="modalLangEs">🇪🇸 Español</button>
+      </div>
+      <div class="paduan-body" id="paduanModalBody"></div>
+      <div style="text-align:right;font-size:0.7rem;color:#b09b89;margin-top:12px;">
+        <i class="fas fa-cross"></i> Sumber: Buku Tata Perayaan Perkawinan
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:680px;margin-top:10px;font-size:0.7rem;color:#b3a191;text-align:center;padding:0 12px;">
+    <i class="fas fa-angel" style="margin-right:4px;"></i> "Berbahagialah orang yang takut akan Tuhan..." — Mzm 112:1
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
