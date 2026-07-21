@@ -86,17 +86,6 @@ body {
   display: block;
 }
 
-/* Fallback jika gambar tidak ada */
-.couple-photo::after {
-  content: "📸";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  opacity: 0.3;
-  pointer-events: none;
-}
 
 .couple-names {
   font-family: 'Cormorant Garamond', serif;
