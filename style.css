@@ -330,7 +330,7 @@ section.alt {
 .person-image.photo-secilia {
   background-image: url('Secilia.jpeg');
   background-size: cover;
-  background-position: top;
+  background-position: center;
 }
 
 .person-image:hover {
@@ -1406,15 +1406,6 @@ footer {
     font-size: clamp(28px, 7vw, 38px);
   }
   
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
-  }
-  
-  .gallery-item {
-    height: 120px;
-  }
-  
   .gift-box {
     width: 110px;
     height: 110px;
@@ -1444,7 +1435,7 @@ footer {
   }
   
   .person-image {
-    height: 200px;
+    height: 150px;
   }
   
   .person-name {
@@ -1466,9 +1457,6 @@ footer {
     height: 300px;
   }
   
-  .gallery-item {
-    height: 240px;
-  }
   
   .hero-title {
     font-size: clamp(50px, 8vw, 80px);
