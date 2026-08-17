@@ -309,7 +309,7 @@ section.alt {
 }
 
 .person-image {
-  height: 360px;
+  height: 350px;
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, #dfe6da, #f6f1e6);
@@ -330,7 +330,7 @@ section.alt {
 .person-image.photo-secilia {
   background-image: url('Secilia.jpeg');
   background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 .person-image:hover {
