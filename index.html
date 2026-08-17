@@ -1,153 +1,292 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-  <title>Undangan Pernikahan | Frankie & Secilia</title>
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#75836d">
+  <title>Frankie & Secilia</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- ===== FIREBASE SDK ===== -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  
 </head>
-<body>
+<body class="locked">
 
-  <!-- ===== UNDANGAN UTAMA ===== -->
-  <div class="invitation-card">
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-symbol"><i class="fas fa-cross"></i> <i class="fas fa-rosary"></i> <i class="fas fa-cross"></i></div>
-      <h1 id="heroTitle">Pernikahan Kudus</h1>
-      <div class="subhead" id="heroSub">Dalam Kasih Kristus</div>
-      
-      <!-- FOTO MEMPELAI DI TENGAH -->
-      <div class="couple-photo">
-        <img src="nikah.jpeg" alt="Frankie & Secilia" id="coupleImage" onerror="this.style.display='none'" />
-      </div>
-      
-      <div class="couple-names">Frankie <span>&</span> Secilia</div>
-      <div class="quote" id="heroQuote">
-        <i class="fas fa-quote-left" style="font-size:0.7rem;margin-right:6px;opacity:0.6;"></i>
-        <span id="quoteText">Apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.</span>
-        <i class="fas fa-quote-right" style="font-size:0.7rem;margin-left:6px;opacity:0.6;"></i>
-      </div>
-      
-      <!-- Language Toggle - 3 BAHASA -->
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="id" id="langId">🇮🇩 Indonesia</button>
-        <button class="lang-btn" data-lang="en" id="langEn">🇬🇧 English</button>
-        <button class="lang-btn" data-lang="es" id="langEs">🇪🇸 Español</button>
-      </div>
+<!-- LANGUAGE -->
+<div class="language">
+  <button class="active" onclick="changeLanguage('id')">ID</button>
+  <span>|</span>
+  <button onclick="changeLanguage('en')">EN</button>
+  <span>|</span>
+  <button onclick="changeLanguage('es')">ES</button>
+</div>
+
+<!-- OPENING -->
+<div class="opening" id="opening">
+  <div class="opening-card">
+    <div class="cross">✝</div>
+    <div class="micro" data-id="Undangan Sakramen Perkawinan" data-en="Invitation to the Sacrament of Holy Matrimony" data-es="Invitación al Sacramento del Santo Matrimonio">
+      Undangan Sakramen Perkawinan
     </div>
-
-    <!-- DETAIL -->
-    <div class="detail-section">
-      <div class="detail-grid">
-        <div class="detail-item">
-          <div class="detail-icon"><i class="fas fa-church"></i></div>
-          <div class="detail-content">
-            <div class="label" id="locLabel"><i class="fas fa-map-pin" style="margin-right:4px;"></i> Lokasi Misa Pernikahan</div>
-            <div class="value location-name" id="locValue">Gereja Katolik Paroki Santo Yohanes Rasul</div>
-            <div style="font-size:0.85rem;color:#5d4b3a;margin-top:2px;font-weight:300;" id="locSub"><i class="fas fa-map-marker-alt" style="margin-right:4px;color:#9f8978;"></i> Delanggu, Klaten</div>
-          </div>
-        </div>
-        <div class="detail-item">
-          <div class="detail-icon"><i class="far fa-calendar-alt"></i></div>
-          <div class="detail-content">
-            <div class="label" id="dateLabel"><i class="far fa-clock" style="margin-right:4px;"></i> Hari & Waktu</div>
-            <div class="value" id="dateValue"><span class="date-highlight">Sabtu, 17 Oktober 2026</span><span style="display:block;font-size:1.2rem;font-weight:600;margin-top:2px;"><i class="far fa-clock" style="font-weight:300;margin-right:8px;color:#7d6856;"></i> <span id="timeText">10.30 WIB</span></span></div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- ===== MAP - GOOGLE MAPS (AKURAT DARI LINK ANDA) ===== -->
-      <div class="map-placeholder">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.083845065406!2d110.7017605!3d-7.6219886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a401ced1ae387%3A0xdb5a37fc60508987!2sGereja%20Katolik%20Paroki%20Santo%20Yohanes%20Rasul%2C%20Delanggu!5e0!3m2!1sid!2sid!4v1740000000000!5m2!1sid!2sid" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-        <div class="map-label">
-          <i class="fas fa-location-dot"></i> 
-          <span id="mapLabelText">Gereja Katolik Paroki Santo Yohanes Rasul</span>
-        </div>
-      </div>
-      
-      <!-- Tombol Navigasi -->
-      <div style="display:flex; gap:10px; margin-top:10px; justify-content:center; flex-wrap:wrap;">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Gereja+Katolik+Paroki+Santo+Yohanes+Rasul+Delanggu&destination_place_id=ChIJhxrqHe08Z3oRh5BJYPw3Wts" target="_blank" class="map-link">
-          <i class="fab fa-google"></i> Google Maps
-        </a>
-        <a href="https://www.google.com/maps/place/Gereja+Katolik+Paroki+Santo+Yohanes+Rasul,+Delanggu/@-7.621989,110.701761,16z/data=!4m6!3m5!1s0x2e7a401ced1ae387:0xdb5a37fc60508987!8m2!3d-7.6219886!4d110.7017605!16s%2Fg%2F1pzv4xv28?hl=id-ID&entry=ttu" target="_blank" class="map-link">
-          <i class="fas fa-map-marked-alt"></i> Buka Peta
-        </a>
-      </div>
+    <div class="names">
+      Frankie<br>&amp;<br>Secilia
     </div>
-
-    <!-- ACTION -->
-    <div class="action-area">
-      <div class="paduan-buttons">
-        <button class="paduan-btn" id="openPaduanBtn" style="flex:2;">
-          <i class="fas fa-book-open"></i> <span id="paduanBtnLabel">📖 Buka Paduan Misa</span>
-        </button>
-      </div>
-
-      <!-- TOMBOL KIRIM UCAPAN & DOA - 2 NOMOR WA -->
-      <div class="rsvp-grid">
-        <a href="#" id="rsvpLink1" class="btn-rsvp" target="_blank">
-          <i class="fas fa-envelope"></i> 
-          <span id="rsvpText1">Kirim ke Frankie</span>
-          <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
-        </a>
-        <a href="#" id="rsvpLink2" class="btn-rsvp" target="_blank">
-          <i class="fas fa-envelope"></i> 
-          <span id="rsvpText2">Kirim ke Secilia</span>
-          <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
-        </a>
-      </div>
+    <div class="micro" data-id="Kepada Yth. Bapak/Ibu/Saudara/i" data-en="Dear Family & Friends" data-es="Estimados Familiares y Amigos">
+      Kepada Yth. Bapak/Ibu/Saudara/i
     </div>
-
-    <div class="footer-note">
-      <i class="fas fa-circle" style="font-size:0.3rem;vertical-align:middle;"></i>
-      <span id="footerText">Dipersembahkan dalam cinta kasih Kristus</span>
-      <i class="fas fa-circle" style="font-size:0.3rem;vertical-align:middle;"></i><br />
-      <span style="font-size:0.7rem;display:block;margin-top:4px;"><i class="fas fa-church"></i> <span id="footerChurch">Gereja Katolik Paroki Santo Yohanes Rasul · Delanggu</span></span>
-    </div>
-  </div>
-
-  <!-- ===== MODAL PADUAN MISA ===== -->
-  <div class="paduan-modal" id="paduanModal">
-    <div class="paduan-modal-content">
-      <button class="close-modal" id="closePaduanModal">&times;</button>
-      <h2 id="modalTitle">📖 Tata Perayaan Perkawinan dalam Misa</h2>
-      <div class="lang-picker">
-        <button class="active" data-modal-lang="id" id="modalLangId">🇮🇩 Indonesia</button>
-        <button data-modal-lang="es" id="modalLangEs">🇪🇸 Español</button>
-      </div>
-      <div class="paduan-body" id="paduanModalBody"></div>
-      <div style="text-align:right;font-size:0.7rem;color:#b09b89;margin-top:12px;">
-        <i class="fas fa-cross"></i> Sumber: Buku Tata Perayaan Perkawinan
-      </div>
-    </div>
-  </div>
-
-  <!-- ===== MUSIC PLAYER - Ed Sheeran Perfect ===== -->
-  <div class="music-player">
-    <audio id="bgMusic" loop preload="auto">
-      <!-- ⚠️ GANTI "perfect.mp3" dengan NAMA FILE LAGU KAMU -->
-      <source src="Ed Sheeran - Perfect.mp3" type="audio/mpeg" />
-    </audio>
-    <button id="musicToggle" class="music-btn" onclick="toggleMusic()">
-      <i class="fas fa-play"></i> <span id="musicLabel">🎵 Putar Lagu</span>
+    <div id="guestName" style="margin-top:8px;font-family:'Cormorant Garamond',serif;font-size:22px;color:#56644f;"></div>
+    <button class="open-button" onclick="openInvitation()" data-id="BUKA UNDANGAN" data-en="OPEN INVITATION" data-es="ABRIR INVITACIÓN">
+      BUKA UNDANGAN
     </button>
   </div>
+</div>
 
-  <div style="max-width:680px;margin-top:10px;font-size:0.7rem;color:#b3a191;text-align:center;padding:0 12px;">
-    <i class="fas fa-angel" style="margin-right:4px;"></i> "Berbahagialah orang yang takut akan Tuhan..." — Mzm 112:1
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <div class="cross">✝</div>
+    <div class="kicker" data-id="Sakramen Perkawinan" data-en="The Sacrament of Holy Matrimony" data-es="El Sacramento del Santo Matrimonio">
+      Sakramen Perkawinan
+    </div>
+    <div class="ornament"></div>
+    <div class="hero-title">
+      FRANKIE
+      <small>&amp;</small>
+      SECILIA
+    </div>
+    <div class="quote" data-id="“Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”" data-en="“Therefore what God has joined together, let no one separate.”" data-es="“Por tanto, lo que Dios ha unido, que no lo separe el hombre.”">
+      “Demikianlah mereka bukan lagi dua, melainkan satu. Karena itu, apa yang telah dipersatukan Allah, tidak boleh diceraikan manusia.”
+    </div>
+    <div class="reference">MATIUS 19:6</div>
+    <div class="hero-image">
+      <img src="nikah.jpeg" alt="Ilustrasi masa kecil Frankie dan Secilia">
+    </div>
+    <div class="wedding-date">17 • 10 • 2026</div>
+    <div class="wedding-time">10.30 WIB</div>
+    <div class="wedding-place" data-id="Gereja Santo Yohanes Rasul" data-en="St. John the Apostle Church" data-es="Iglesia de San Juan Apóstol">
+      Gereja Santo Yohanes Rasul<br>Delanggu
+    </div>
+  </div>
+</header>
+
+<!-- MEMPELAI -->
+<section>
+  <div class="kicker" data-id="Kedua Mempelai" data-en="The Couple" data-es="La Pareja">Kedua Mempelai</div>
+  <div class="section-title" data-id="Dengan penuh sukacita" data-en="With great joy" data-es="Con gran alegría">
+    Dengan penuh sukacita
+  </div>
+  <p class="lead" data-id="Kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan menjadi bagian dari hari bahagia kami." data-en="We invite you to join us and be part of our joyful day." data-es="Les invitamos a acompañarnos y ser parte de nuestro día feliz.">
+    Kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan menjadi bagian dari hari bahagia kami.
+  </p>
+  
+  <div class="couple">
+    <!-- FRANKIE -->
+    <div class="person">
+      <div class="person-image photo-frankie"></div>
+      <div class="person-name">Frankie</div>
+      <div class="parents">
+        <span data-id="Putra kedua dari" data-en="Second son of" data-es="Segundo hijo de">Putra kedua dari</span><br>
+        <b>Rafael Rodriguez Lopez</b><br>&amp;<br>
+        <b>Elsie Rodriguez Gonzalez</b>
+      </div>
+    </div>
+    
+    <!-- SECILIA -->
+    <div class="person">
+      <div class="person-image photo-secilia"></div>
+      <div class="person-name">Secilia</div>
+      <div class="parents">
+        <span data-id="Putri kedua dari" data-en="Second daughter of" data-es="Segunda hija de">Putri kedua dari</span><br>
+        <b>Stephanus Budi Haryoko (†)</b><br>&amp;<br>
+        <b>Skolastika Sri Harjanti</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="alt">
+  <div class="kicker">17 Oktober 2026</div>
+  <div class="section-title" data-id="Menuju Hari Bahagia" data-en="Counting Down" data-es="Cuenta Regresiva">
+    Menuju Hari Bahagia
+  </div>
+  <p class="lead" data-id="Sebuah langkah baru dalam kasih dan iman." data-en="A new step in love and faith." data-es="Un nuevo paso en amor y fe.">
+    Sebuah langkah baru dalam kasih dan iman.
+  </p>
+  <div class="countdown">
+    <div class="count-box">
+      <strong id="days">00</strong>
+      <span data-id="HARI" data-en="DAYS" data-es="DÍAS">HARI</span>
+    </div>
+    <div class="count-box">
+      <strong id="hours">00</strong>
+      <span data-id="JAM" data-en="HOURS" data-es="HORAS">JAM</span>
+    </div>
+    <div class="count-box">
+      <strong id="minutes">00</strong>
+      <span data-id="MENIT" data-en="MINUTES" data-es="MINUTOS">MENIT</span>
+    </div>
+    <div class="count-box">
+      <strong id="seconds">00</strong>
+      <span data-id="DETIK" data-en="SECONDS" data-es="SEGUNDOS">DETIK</span>
+    </div>
+  </div>
+</section>
+
+<!-- ACARA -->
+<section>
+  <div class="kicker">Holy Matrimony</div>
+  <div class="section-title" data-id="Sakramen Perkawinan" data-en="Sacrament of Matrimony" data-es="Sacramento del Matrimonio">
+    Sakramen Perkawinan
+  </div>
+  <p class="lead" data-id="Dengan penuh syukur kami akan menerima Sakramen Perkawinan di hadapan Tuhan dan Gereja." data-en="With gratitude, we will receive the Sacrament of Matrimony before God and the Church." data-es="Con gratitud, recibiremos el Sacramento del Matrimonio ante Dios y la Iglesia.">
+    Dengan penuh syukur kami akan menerima Sakramen Perkawinan di hadapan Tuhan dan Gereja.
+  </p>
+  <div class="event-card">
+    <div class="cross">✝</div>
+    <h3>17 Oktober 2026</h3>
+    <p>
+      <b>10.30 WIB</b><br><br>
+      <span data-id="Gereja Santo Yohanes Rasul" data-en="St. John the Apostle Church" data-es="Iglesia de San Juan Apóstol">Gereja Santo Yohanes Rasul</span><br>
+      <span data-id="Delanggu" data-en="Delanggu" data-es="Delanggu">Delanggu</span>
+    </p>
+    <a class="map-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Gereja+Santo+Yohanes+Rasul+Delanggu" data-id="LIHAT LOKASI" data-en="VIEW LOCATION" data-es="VER UBICACIÓN">
+      LIHAT LOKASI
+    </a>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="alt">
+  <div class="kicker">RSVP</div>
+  <div class="section-title" data-id="Konfirmasi Kehadiran" data-en="Kindly Confirm Your Attendance" data-es="Confirme Su Asistencia">
+    Konfirmasi Kehadiran
+  </div>
+  <p class="lead" data-id="Silakan konfirmasi kehadiran Anda." data-en="Please confirm your attendance." data-es="Por favor confirme su asistencia.">
+    Silakan konfirmasi kehadiran Anda.
+  </p>
+  
+  <form class="rsvp" id="rsvpForm">
+    <label data-id="NAMA" data-en="NAME" data-es="NOMBRE">NAMA</label>
+    <input id="rsvpName" required data-id-placeholder="Nama Anda" data-en-placeholder="Your Name" data-es-placeholder="Su Nombre" placeholder="Nama Anda">
+    
+    <label data-id="KEHADIRAN" data-en="ATTENDANCE" data-es="ASISTENCIA">KEHADIRAN</label>
+    <select id="rsvpAttendance" required>
+      <option value="" data-id="Pilih" data-en="Select" data-es="Seleccionar">Pilih</option>
+      <option value="Hadir" data-id="Hadir" data-en="Attend" data-es="Asistir">Hadir</option>
+      <option value="Tidak hadir" data-id="Tidak hadir" data-en="Not attend" data-es="No asistir">Tidak hadir</option>
+    </select>
+    
+    <label data-id="JUMLAH TAMU" data-en="NUMBER OF GUESTS" data-es="NÚMERO DE INVITADOS">JUMLAH TAMU</label>
+    <input id="rsvpGuests" type="number" min="1" max="10" value="1" required>
+    
+    <label data-id="UCAPAN" data-en="MESSAGE" data-es="MENSAJE">UCAPAN</label>
+    <textarea id="rsvpMessage" data-id-placeholder="Tuliskan ucapan untuk Frankie & Secilia..." data-en-placeholder="Write a message for Frankie & Secilia..." data-es-placeholder="Escribe un mensaje para Frankie & Secilia..." placeholder="Tuliskan ucapan untuk Frankie & Secilia..."></textarea>
+    
+    <button type="submit" data-id="SIMPAN RSVP" data-en="SAVE RSVP" data-es="GUARDAR RSVP">SIMPAN RSVP</button>
+  </form>
+  
+  <!-- STATISTIK RSVP -->
+  <div class="rsvp-stats">
+    <div class="stat">
+      <strong id="totalRsvp">0</strong>
+      <span data-id="RESPON" data-en="RESPONSES" data-es="RESPUESTAS">RESPON</span>
+    </div>
+    <div class="stat">
+      <strong id="totalAttend">0</strong>
+      <span data-id="HADIR" data-en="ATTENDING" data-es="ASISTEN">HADIR</span>
+    </div>
+    <div class="stat">
+      <strong id="totalGuests">0</strong>
+      <span data-id="TOTAL TAMU" data-en="TOTAL GUESTS" data-es="TOTAL INVITADOS">TOTAL TAMU</span>
+    </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- DAFTAR RSVP -->
+  <div class="rsvp-list-container">
+    <h3 class="rsvp-list-title" data-id="Daftar Konfirmasi" data-en="Confirmation List" data-es="Lista de Confirmaciones">
+      Daftar Konfirmasi
+    </h3>
+    <div id="rsvpList" class="rsvp-list">
+      <!-- Akan diisi oleh JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- WEDDING GIFT -->
+<section>
+  <div class="kicker" data-id="Tanda Kasih" data-en="A Token of Love" data-es="Un Signo de Amor">Tanda Kasih</div>
+  <div class="section-title">Wedding Gift</div>
+  <p class="lead" data-id="Doa dan kehadiran Anda adalah hadiah terindah bagi kami." data-en="Your prayers and presence are the most beautiful gift for us." data-es="Sus oraciones y presencia son el regalo más hermoso para nosotros.">
+    Doa dan kehadiran Anda adalah hadiah terindah bagi kami.
+  </p>
+  
+  <!-- FITUR BUKA KADO -->
+  <div class="gift-box-container">
+    <div class="gift-box" id="giftBox" onclick="openGift()">
+      <div class="gift-lid"></div>
+      <div class="gift-body">
+        <div class="gift-ribbon"></div>
+        <div class="gift-bow">🎀</div>
+        <div class="gift-label" data-id="Buka Kado" data-en="Open Gift" data-es="Abrir Regalo">Buka Kado</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KONTEN YANG MUNCUL SETELAH KADO DIBUKA -->
+  <div class="gift-content" id="giftContent">
+    <div class="gift-reveal">
+      <div class="confetti-container" id="confettiContainer"></div>
+      
+      <div class="gift-message">
+        <div class="cross">✝</div>
+        <h2 data-id="Terima Kasih!" data-en="Thank You!" data-es="¡Gracias!">Terima Kasih!</h2>
+        <p data-id="Doa dan kehadiran Anda adalah hadiah yang paling berharga. Namun jika Anda ingin memberikan tanda kasih, berikut adalah informasi rekening kami:" data-en="Your prayers and presence are the most precious gift. However, if you wish to give a token of love, here is our bank account information:" data-es="Sus oraciones y presencia son el regalo más valioso. Sin embargo, si desea dar una muestra de amor, aquí está nuestra información bancaria:">
+          Doa dan kehadiran Anda adalah hadiah yang paling berharga. Namun jika Anda ingin memberikan tanda kasih, berikut adalah informasi rekening kami:
+        </p>
+      </div>
+
+      <div class="bank">
+        <div class="bank-name" data-id="BANK / E-WALLET" data-en="BANK / E-WALLET" data-es="BANCO / BILLETERA">BANK / E-WALLET</div>
+        <br>
+        <span data-id="SECILIA ONI SEPTIANA" data-en="SECILIA ONI SEPTIANA" data-es="SECILIA ONI SEPTIANA">SECILIA ONI SEPTIANA</span>
+        <br>
+        <div class="account-display">
+          <b id="accountNumber">1461808536</b>
+          <button class="copy-button" onclick="copyAccount()" data-id="SALIN NOMOR" data-en="COPY NUMBER" data-es="COPIAR NÚMERO">SALIN NOMOR</button>
+        </div>
+        <div id="copyNotification" class="copy-notification" 
+        data-id="✓ Tersalin!" 
+        data-en="✓ Copied!" 
+        data-es="✓ ¡Copiado!">
+        ✓ Tersalin!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="cross">✝</div>
+  <div class="footer-names">Frankie<br>&amp;<br>Secilia</div>
+  <div>17 • 10 • 2026</div>
+  <p style="margin-top:20px;font-size:10px" data-id="Terima kasih atas doa, kasih, dan kehadiran Anda." data-en="Thank you for your prayers, love, and presence." data-es="Gracias por sus oraciones, amor y presencia.">
+    Terima kasih atas doa, kasih, dan kehadiran Anda.
+  </p>
+</footer>
+
+<!-- MUSIC -->
+<button class="music-button" onclick="toggleMusic()">♪</button>
+<audio id="weddingMusic" loop>
+  <source src="Ed Sheeran - Perfect.mp3" type="audio/mpeg">
+</audio>
+
+<!-- JAVASCRIPT -->
+<script src="script.js"></script>
 </body>
 </html>
